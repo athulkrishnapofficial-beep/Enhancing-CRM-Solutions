@@ -4,7 +4,6 @@ import { protect } from "../middlewares/authMiddleware.js";
 
 const router = express.Router();
 
-// All routes are protected (must be logged in to see/edit CRM data)
 router.use(protect);
 
 router.get("/", getCustomers);

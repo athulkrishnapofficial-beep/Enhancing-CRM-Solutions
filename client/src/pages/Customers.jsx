@@ -8,7 +8,6 @@ const Customers = () => {
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  // Fetch customers on load
   useEffect(() => {
     fetchCustomers();
   }, []);
@@ -27,7 +26,7 @@ const Customers = () => {
     try {
       await API.post('/customers', form);
       setForm({ name: '', email: '', phone: '', company: '', status: 'New' }); // Reset form
-      fetchCustomers(); // Refresh list
+      fetchCustomers(); 
       setError('');
     } catch (err) {
       setError(err.response?.data?.message || 'Error adding customer');
@@ -52,7 +51,6 @@ const Customers = () => {
           <button onClick={() => navigate('/dashboard')} className="text-blue-500 hover:underline">Back to Dashboard</button>
         </div>
 
-        {/* Input Form */}
         <div className="bg-white p-6 shadow rounded-lg mb-8">
           <h2 className="text-xl font-semibold mb-4">Add New Customer</h2>
           {error && <p className="text-red-500 mb-2">{error}</p>}
@@ -70,7 +68,6 @@ const Customers = () => {
           </form>
         </div>
 
-        {/* Customer Table */}
         <div className="bg-white shadow rounded-lg overflow-hidden">
           <table className="min-w-full leading-normal">
             <thead>
